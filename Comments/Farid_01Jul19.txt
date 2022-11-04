@@ -1,0 +1,136 @@
+Dear Farid,
+
+Many thanks for reading this support note so thoroughly, and for your very helpful comments. Please find our replies to your comments attached below. The internal note has also been updated on CDS, and we look forward to discussing these things with you in the EB meeting tomorrow.
+
+All the best,
+Andy, Elliot and Kostas
+
+
+l70 - How large is the tau contribution? This leads to missing ET, and a shift of the Z-mass when measuring only 2 leptons ...
+>>>>> A quick study finds that Z->tautau make up about 1.7% of our total signal accptence.
+
+l96 - pseudoscalar
+>>>>> Done.
+
+l103 - Fix reference
+>>>>> Fixed. Thanks!
+
+Table 2 p 6 - Sherpa 2.2.1. why not more recent  versions?
+>>>>> Because the samples are only available for 2.2.1. This is because it is very computationally expensive to produce >1 bn Z+jets events.
+
+l130 - BRs are shown
+>>>>> Done.
+
+l140 - fix sentence
+>>>>> Done.
+
+l207 - footnote. reducing the background acceptance: by how much?
+>>>>> As can be seen from Figure 3b, the subleading lepton pt distributions are almost identical for signal and background. So the background acceptance will be reduced to the same degree as the signal acceptance
+
+l227. AnY jets
+>>>>> Done.
+
+l242 - This criteria: meaning resonance from highest PT jet, right?
+>>>>> Exactly.
+
+l244 - what is meant by correct rec eff?  (some explanation in table 5 ... use MC to match the resonance jet with the truth one).
+>>>>> Exactly. This has been clarified.
+
+l245 - "three body mass case" : what is it? when not requiring the resonance not to come from the highest PT jet?
+>>>>> It is where the jet which gives a three body mass closest to 125 GeV is selected. This has been clarified.
+
+l246 - Higgs signal region. Why asymmetric? Breit-Wigner intead of Gauss?
+>>>>> It is chosen to maximise the post-MLP selection S/sqrt(B). The asymmetry comes from the asymmetric background distribution.
+
+l252 - Any comments on Fig 2 - 6? Especially Fig. 2 where the Mjet seems shifted between MC and data...
+>>>>> These distributions (and how to improve their modelling) are discussed in detail in the reweighting section. The Mjet distribution is not used anywhere in the analysis, and so the disagreement in this variable does not impact the final result in any way.
+
+l256 - "negligible pT: how low?
+>>>>> The twiki says "~0", but then mentions the number "10 keV". In any case it is small enough to be negligible.
+
+l271-272: what is a shared model? - module?
+>>>>> Corrected.
+
+Figure 2 p 12 - The agreement is lousy, are you happy with this at this stage? Especially there is a big shift in the mass distribution.  - some improvement later …
+>>>>> The mass is not used in the analysis, and the pt is reweighted to match data, as described in a later section. So you can see in Figure 16f, the post-reweighting pt agreement is quite good.
+
+Fig 7 p 17 - what are the a0xpy?? signal a resonance various masses ...
+>>>>> Correct. The plot labels have been updated to the more recent/clear convention.
+
+Fig 8 p 17 - agreement MC / data not very good ... shifted mass
+>>>>> This variable is not used in the analysis. It is only given as an illustration of the effectiveness of the track selection criteria. However, it is improved substantially by the reweighting.
+
+Figure 9, 10, 11 p 19,20  - again shifted distributions ...
+>>>>> These are the pre-reweighting distributions. This disagreement is what motivates the reweighting we apply. The agreement is much better in the reweighted distributions.
+
+l 327-329 - Is this allowed to remove a sample because it biases classifier and deteriorates performance at high mass?
+>>>>> Yes, you can train a classifier however you like, as long as the result has the usual positive features (strong discrimination, no overtraining, etc). It is just a selection after all, so we can choose it.
+
+l339 - Delphes: what is this simulation? Give reference?
+>>>>> Reference added
+
+l351 - in in twice
+>>>>> Fixed.
+
+l373 - Table??
+>>>>> Fixed.
+
+Fig 12,13 p 21 - Pity that legend covers parts of the distributions ...
+>>>>> Fixed.
+
+Figure 14 p 22 - ROC curves : 50% signal efficiency - 90% background rejection ...
+>>>>> Added.
+
+l389 - "except" : would add EITHER OR
+>>>>> Done.
+
+Fig 15 p 25 - (a) Why are there no ratio points above 11? (b) some ratio points missing - show some arrow?
+>>>>> We intend to add the arrows as soon as possible.
+
+Fig 16 p 26what happend with the MC around 150?
+A very high magnitude negative-weight Zjets event (from a low pt slice) passed the selection.
+
+l420-421 - estimated with MC?
+>>>>> Yes. An appendix has been added describing this in detail.
+
+l423,424 - correction supposed to improve the agreement MC-data above. Let's see what this brings. Will the training be redone after this?
+>>>>> This line refers to the ABCD correction factor given in the equation above line 429. It has already been incorporated into the background estimates in Table 11. The MLP training will not be redone because the MLP is required to blind the data so that the weights can be derived without unblinding ourselves, or have potential signal contamination in the reweighting procedure.
+
+Fig 17 p 27 - (a) so a max 10% disagreement at low and high values, 5% elsewhere. Check how it looked before ... (e) some slope behavior .. + fix the overwriting.
+>>>>> Overwriting fixed. The plots before reweighting are now given alongside the post-reweighting variables, in Figures 16-20. So small mismodelling remains, but small have a small affect due to the double ratio taken in the ABCD correction factor. This is validated in data in the 10 validation regions which use these inputs.
+
+l444,445 - Alternative Z+jets MC: statistical errors smaller and estimates closer to data. Maybe systematic errors would have to be added in this case? This has been addressed during the 1. edboard  presentation.
+>>>>> Sherpa was chosen as nominal because it is the recommended ATLAS generator, it has NLO ME calculations, and it showed superior modelling after the reweighting. The lower stat uncertainties just come from having no negative weight events.
+
+l449 - Missing systematics: So, still some work to do :). Maybe already done at this stage?
+>>>>> We are working on them.
+
+l463 - uncertainties twice
+>>>>> Corrected.
+
+l466 - weighted sum: according to what? cross-section?
+>>>>> Yes. The text has now been clarified.
+
+l476-478 - to be done. Check status of remaining systematics
+>>>>> Still in progress.
+
+l491-493 - unusual way of quoting systematics ... -+
+>>>>> Some are asymmetric, and so can not be quoted as +-X.
+
+l508 - lepton uncertainties: how different are the electrons and muons?
+>>>>> Muons are experimentally cleaner. But these are all very small uncertainties, and make almost no difference to the final result.
+
+l519 - Why is this so higher than the others for the Jpsi? Or do you mean 0.63% ?
+>>>>> It should be 0.63%. This is now fixed.
+
+l603 - decay mode are shown in Table 16
+>>>>> Fixed.
+
+l611 - as though (the) it was
+>>>>> Fixed.
+
+l621 - so, next step is to go unblinded ... once systematics, re-training, ... fixed.
+>>>>> Text added to the end of the paragraph.
+
+l626,627 - limitation to 0-4 GeV for the a0 signal hypotheses. Is this a final decision or will / can further studies improve the situation?"
+>>>>> The analysis almost completely looses sensitivity above 4 GeV, so the limit should stop there.

@@ -1,0 +1,3 @@
+There is an interesting feature in fig 17: a, a little spike of p_T^lead track / p_T^tracks at 0.5. This suggest you have a small class of jets where there are two tracks and they have the same momentum. that sounds a bit odd - can you investigate and make sure there is no double counting please?
+
+>>>>> The code has been double checked, and there is no sign of double counting. Furthermore, the issue has been investigated by vetoing events with 2 or fewer tracks, and the spike at 0.5 does indeed disappear. This supports your explanation that this spike arises from events with 2-track jets.

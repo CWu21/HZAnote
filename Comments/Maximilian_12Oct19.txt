@@ -1,0 +1,55 @@
+L202: This literature review is very interesting and complete. One additional useful number to know might be the unconstrained branching ratio of the Higgs— to 95% CL, what is the fraction of Higgs decays which haven’t been observed? This gives us a maximal bound on the BR available to the aa decay.
+
+>>>>> The number is 22% last time I checked, but it relies on assumptions about the vector boson couplings, so it is not as direct.
+
+L259: I appreciate that this isn’t used in the final results, but I”m curious what ATLAS Delphes card you used— some of these are known to be somewhat inaccurate.
+
+>>>>> We use the default Delphes ATLAS card, which has been the same for the last 2 years.
+
+L311: Does the 18 GeV second lepton have any appreciable impact on your acceptance?
+
+>>>>> It resulted in a ~5% efficiency loss.
+
+L363: This is interesting— the plot has a real step at 4 GeV, and all the other mass points are more similar. Is this because charm decays and neutrinos open up because of that? Please clarify.
+
+>>>>> Somewhat due to charm decays, but mostly from tau leptons. This is now clarified.
+
+L394: Why refer to this as a MLP— isn’t this just a fairly standard NN?
+
+>>>>> MLP is more specific, as general NNs can have more elaborate structures. MLPs only feed the information forward.
+
+L396: “higher resolution” —> “improved angular and pT resolution”
+
+>>>>> Implemented. Thanks!
+
+L413: Why use tau2, and not the usual tau2/tau1 ratio which is usually much stronger? Why not use a more modern definition of tau2, which chooses axes that minimize the value? This also typically shows much improved performance.
+
+>>>>> We tested tau2/tau1, and tau2 alone was shown to offer better discrimination over the mass range. We believe this is because it capitalises on both the 2-pronged substructure (that is more directly accessed by tau2/tau1), and the fact that the a0 resonances are narrower, which is lost in the ratio.
+
+Are the mismodeling in Figure 10 and 11 OK? This is even after reweighting... I would comment on this in the text. This makes me wonder if your tagged needs some sort of calibration.
+
+>>>>> While it is true that some mismodelling remains after the reweighting, only the mismodelling in the three body mass and MLP output variables affect the background estimate, and these are fairly small. Also, the double ratio which is taken for the background estimate is able to mitigate the impact of this residual mismodelling on the background estimate by cancelling this mismodelling in the ratio. These mechanisms make our background estimate robust, as demonstrated in Figure 21, and the two newly unblinded regions, all of which agree with data. Also, uncertainties on the modelling of the shower are applied for both the signal and the background to cover any such effect.
+
+Figure 13: Why does the 0.5 GeV particle get reconstructed to 0.75 in such a sharp cut off?
+
+>>>>> See next response.
+
+Figure 13: Lots of the signal from low mass, gets reconstructed to high masses— the 0.5 point has a peak at 3. Do you understand why?
+
+>>>>> The regression compressed the whole spectrum to effectively 'hedge its bet' against selecting the wrong mass, by gravitating towards the center of the distribution. This, and the fact that the feature variables do not perfectly predict the mass, is why the low masses have a portion of their spectrum at higher mass values. The 0.5 GeV and 0.75 GeV a0 have fairly similar features, so the MLP will struggle to distinguish them. However, if it chooses the 0.5 GeV mass, then it is punished by an extra 0.25 GeV if it made a mistake. So it makes sense that it should only predict a mass of 0.5 GeV in the very rare case that the features are almost completely incompatible with the 0.75 GeV signal hypothesis.
+
+General question: why train the final classifier with all signal masses as simultaneous inputs? Surely a separate NN per mass point, or a parameterized NN would do better.
+
+>>>>> Both of these were considered, and tried. However, even the parameterised NN requires a variety of selections for different target masses, which means have N different: selections, background models, sets of systematics, fits. We developed this regression-in-classification training as a way of improving the performance of the inclusive training, while only having to perform the selection, background estimate, and systematic evaluation once.
+
+Figure 35: What normalization do you have on this plot for the signal? Probably a more reasonable normalization should be chosen.
+
+>>>>> See next response.
+
+Figure 35: Should you robin this plot a little? Both the bkgd and signal has some random peaks which make me think there are some statistical fluctuations you could remove.
+
+>>>>> All of the distributions are normalised to an integral of unity. We will improve this plot, giving a more physical normalisation soon.
+
+Results: can you make a table of the expected and observed limits together? A proper limit plot would be great too.
+
+>>>>> Limit plots with expected and observed limits have been added.

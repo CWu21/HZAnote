@@ -1,0 +1,76 @@
+Dear Ben,
+
+Many thanks for your thorough reading of this support note, and for your very useful comments. Please find our replies to your comments below. The internal note has also been updated on CDS, and we look forward to discussing these things with you in the EB meeting tomorrow.
+
+All the best,
+Andy, Elliot and Kostas
+
+
+- PS - thank you Elliot for the help with the H->aa, a->gg analysis!  We have been making slow progress and may return to you with questions about the background and data samples you have been using.
+>>>>> My pleasure!
+
+- Is the plan to still include a Charmonium interpretation?  I did not see it in the results (my apologizes if I missed it).  My understanding from the EB meeting (https://indico.cern.ch/event/827288/contributions/3462043/attachments/1863598/3063575/HZXSearch_EBMeeting1_ElliotReynolds.pdf) is that the limit on the BR is bigger than 100% so you did not want to include it?  I think the current best limit is also above 100% (in which case, better to set a cross section limit, not a BR limit), so this may not be meaningless.
+>>>>> We will set a cross section limit for all interpretations, including the charmonium.
+
+- L92: I don't think the "not explored at the LHC" is true - perhaps better to in fact describe other search efforts related to 2HDM models and how this search is complementary.
+>>>>> It was supposed to refer to just the low tanBeta low mA part of the phase space, but has now been removed.
+
+- L109: I think the current total lumi is 139 / fb - please check.
+>>>>> The lumitag has now been updated accordingly.
+
+- L128: Is this sample also used by other analyses?  If not, why would you not restrict the decays to be only the hadronic ones?  This seems like a (relatively small, in this mass range) waste of computing resources (not to mention a challenge for the ML).
+>>>>> The 2HDM a0 would not just decay to hadrons, and we would have some acceptance for the non-hadronic final states, so we wanted to be able to understand the acceptance to these other decay modes in case they were important.
+
+- L154: It is a nice idea to augment the training with these Delphes samples.  Did you check that the performance from the Delphes samples is simlar to the one from the ATLAS full sim ones?  (for cases where you have the same mass?)
+>>>>> We did. The Delphes samples do not include pileup, which affects the MLP performance, as summarised in the newly added appendix. As such, the Delphes samples predicted superior performance. The S/sqrt(B) gain from the MLP application for the 1 GeV signal samples was 3.4 instead of 2.6 for example.
+
+- L262: Are you sure these are from pileup and not from the UE/MPI?  Just because it doesn't come from the resonance, doesn't mean it comes from pileup.
+>>>>> We are not. This statement was too strong, and has been reworded accordingly.
+
+- L277: Why is mTA not used in the analysis?  Seems like a useful observable.  Does the 8 GeV mass point not peak at 8 GeV fo mTA because of the small radius?
+>>>>> mTA was not included in the MLP as: it was found to not offer as much discrimination for the MLP; it is partly calorimeter-based, which would potentially add extra uncertainties to the MLP; the regression MLP does this job a lot better than mTA. The 8 GeV mass point does not peak at 8 GeV for that reason, and because the dominant tautau and ccbar decay modes have neutrinos in the final state.
+
+- L280: What is the efficiency of this cut?  I guess you require 2 because some of the observables require at least two jet constituents?
+>>>>> This depends on the signal hypothesis mass, which have very different track multiplicities. For the 0.5 (8) GeV a0, the cut is 94% (96%) efficient. Yes, most of the MLP inputs require at least 2 tracks to be well-defined.
+
+- L284: Is this true?  It may be true, but unless you did an explicit study (also using cell and not cluster information), then perhaps it is worthwhile to tone down this claim.  I would have thought that the main motivation for using tracks is that we understand their reconstruction and modelling very well, which is not the case for the calorimeter.
+>>>>> The statement has been modified accordingly.
+
+- Table 6: Are these the only observables that were studied?  They seem a bit random ... for instance, why tau2 and not tau2/tau1?  Why U1/M2 instead of N2 and D2?  (which are more commonly used)  Why angularity(2) and not mass?  (which is nearly the same)
+>>>>> There was an extensive list of variables tested (including tau2/tau1, N2 and D2), and these were found to be the optimal choice. The superior performance of tau2 over tau2/tau1 is likely due to the MLP using the width of the system as well as the 2-pronged substructure. U1/M2 is not used, they are both given individually, from which the MLP can use their ratio if it is useful. The mass was not found to offer significant additional discrimination.
+
+- L310: This is a clever way around the problem of having to fit the background multiple times (I'm surprised this is not mentioned here ... an "easier" solution from the point of view of learning is to simply add the a0 mass to the training as in 1601.07913).  Do you have a plot that shows how this + the classifier in the next paragraph compares to a dedicated classifier trained on a single signal sample?  Is that much better?
+>>>>> We did look at using the parameterised MLP in 1601.07913, but while it gets around retraining the MLP nSignal times, all aspects of the analysis after the MLP must still be replicated nSignal times, including nSignal sets of systematics, background model validations etc. The regression in classification idea we adopted was tested against an exclusive classification using the Delphes samples, and was found to have a mean S/sqrt(B) loss of just ~3% compared to individually trained classifiers, and a gain of ~15% as compared to an inclusively trained classifier.
+
+- Fig. 12: It seems like the regression model is biased - do you understand why on average it is getting the wrong value of the a mass?  (would be helpful to plot <NN output> versus a mass - since you are minimizing the MSE, it should get the answer correct on average).
+>>>>> This is due to the fact that by estimating a mass value closer to the mean of the input mA0 values than the single true mA0 value of its preferred mass hypothesis, it minimises the loss function in the case that it is not correctly predicting the a0 mass hypothesis. It is effectively hedging its bet against having incorrectly predicted the a0 mass hypothesis. This causes the observed regression to the mean of the input mA0 values.
+
+- L324: What was the actual architecture?  (saying "default TMVA" is not very informative)
+>>>>> The full description has now been added.
+
+- L326: Perhaps too late now, but I would have thought that a better way (less dependent on the concotion of signal samples used in training) is to feed directly the a0 mass during training and then during testing, you can replace the a0 mass with the regression network.  This is similar to how the training is done for pixel splitting in tracking - one network decides how many particles are in a pixel cluster and then one decides where the particles are given the output of the first.  During training, we use the actual number of particles but then when we deploy it in practice, we don't know this information and thus have to use the output of another network that predicts the number of particles.
+>>>>> Aside from the timescale, this has one major issue if I understand you correctly. Given the true a0 masses (which are very narrow resonances for each signal sample) the classifier would learn to rely almost entirely on this unrealistically good discriminant, which is no where near as narrow in the regression. Its performance would then seriously suffer when given the MLP, as the MLP would not be reasonably described by the training data.
+
+- L333+: I'm confused - on which samples was the final NN trained?
+>>>>> The Powheg+Pythia8 samples with a Geant4 simulation were used for all of the main results, including the final NN. The Delphes samples were just used to validate the concepts and test a few ideas for the MVA strategy. This has now been clarified.
+
+- Table 7: What does s/sqrt(b) gain mean and why is it less than 1 for some of the signals?  (the s/sqrt(b) gain looks suspiciusly close to 10x less than the first row in the table).
+>>>>> It means MVA_signal_efficiency/sqrt(MVA_bkgd_efficiency). It less than 1 for some samples because a single MVA cut is used to prevent creating multiple selections (and therefore systematics, background estimates etc), and the optimal value for this single cut was found to sacrifice sensitivity to some masses which we were not very sensitive to anyway. It is close to 10x the signal efficiency because the background efficiency is very close to 1%.
+
+- L391: What is the signal contamination?  If I understand correctly, this is the full selection with one or both of the invariant mass or NN cuts inverted.
+>>>>> It is indeed. An appendix has been added which describes and quantifies this contamination in more detail.
+
+- The ratio in Fig. 15b looks suspicious - is it really the case that every other bin is above/below unity?
+>>>>> It is correct. The reason is that this is post-reweighting, and the reweighting has half the binning of that plot (which is so you can compare is to the pre-reweighting distribution). So naturally every 2 bins in the reweighting-binned region have to average to 1.
+
+- Equation before L429: how big is the correction factor?  It is a bit strange to use the ABCD method in a case where you know that it should not apply.  If this correction factor is very small (say O(10%)) then I think it is fine.  If it is not small, then I would be a bit worried.
+>>>>> The correction factor in the SR is 0.60, and thus needs to be applied. It is not closer to unity due to the non-negligible correlation between mH and the MLP output, which it is designed to account for. But its effectiveness (combined with the reweighting) is made clear by the comparison to data in the 10 (now 13) validation regions.
+
+- Sec. 4.3.2: Can you please provide a quantitative assesement of the validation quality?  There are many numbers in different tables and it is hard to synthesize all of it by eye.
+>>>>> Done. Please see newly added Figure 21.
+
+- L544: In addition to the uncertainty on the momentum, there are also uncertainties on the efficiency, fake rate, and other track parameters (d0 and z0).
+>>>>> The d0 and z0 smearing is being calculated at present. The tracking uncertainties are more difficult because the FTAG2 derivation used here does not contain the necessary truth information for the tool to work. However, it is not expected to have a large impact on the final result.
+
+- As I mentioned in the meeting, one uncertainty that I think you are missing is an uncertainty on the fragmentation modeling of the signal.  Since the signal efficiency of your tagger cannot be calibrated in data, we need a way of determining an uncertainty.  The uncertainty should be due to track reconstruction modeling (which it sounds like you will evaluate) as well as modeling of fragmentation.  For this, I think we need an alternative fragmentation model (e.g. Herwig/Sherpa) as a minimum.  It would be even better to also vary the tune and other aspects of the fragmentation modeling, but at least comparing two generators could provide a baseline uncertainty.
+>>>>> We now have numbers for the PDF, renormalisation and factorisation SFs, which will be added to the fit soon. We will also perform the Herwig comparison.

@@ -1,0 +1,25 @@
+Table 8 Can you make this into a plot to be added as a auxiliary material for the paper. I'ts very useful when people want to present the results and for theorists.
+
+>>>>> This table will either be in the auxiliary material, or in the paper itself.
+
+Systematics section
+
+I still think you should add a systematic for the reweighting procedure, however small it might be. Or at least mention the size in the note. It is common in ATLAS to use half of the reweighting as systematic uncertainty.
+
+>>>>> The reweighting uncertainty was conservatively estimated by removing the reweighting entirely, and calculating the change to the background estimate. Half of the uncertainty we found is less than 0.1%, which is completely negligible, in addition to being conservative. Test has been added to the note summarising this study. The MadGraph uncertainty does also cover the choice of reweighting procedure, as it uses a different reweighting procedure.
+
+Table 13 ==> I had not understood previously that you only added the biggest variation. Again here you should add them all and let them float independetly in the fit, they are not subdominat with respect to the MC stats. I won't insist here since you also have a systematic comeing from the difference between Sherpa and Madgraph, but a warning that this will come up during ATLAS circulation. But you need to include the full 6.36% and not the 3.45% when you reweight again to the data.
+
+>>>>> As we understand, the standard procedure is to take an 'envelope' of these uncertainties, which for a one-bin fit is simply the largest value. We do not include the PDF uncertainties as they are negligibly small. The 6.36% number is not relevant, as it evaluated for a background estimate which is never used in the analysis. We reweight the MC to data to reduce the impact of uncertainties such as this one, and so should evaluate the impact of the uncertainty on the background estimate which we use.
+
+Line 689-690 why so asymettric the effect?
+
+>>>>> This is because the three body mass cut was optimised for the signal resonance. So scaling the jet pt up causes us to loose events on the high side of the window, and scaling it down causes us to loose events on the low side of the window.
+
+Figure 34 left where are the two data points in the lower panel between 0.15 and 0,20. Either remkae the plot with a large y scale or add an arrow
+
+>>>>> We are in the process of neatening the plots at present for the paper draft.
+
+Could you add a table summarizing the systematic impact on the background estimate?
+
+>>>>> Done.

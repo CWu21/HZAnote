@@ -1,0 +1,124 @@
+General comments:
+
+-- It would be very helpful for the reader if you could add a few \clearpage commands to your latex files.  For example, at the end of each (sub)section with many figures.  Without this, the figures get dispersed throughout your manuscript and it's frequently hard to follow the details of the scattered tables and figures.
+
+>>>>> \clearpage added before each new section for consistency.
+
+-- I enjoyed reading Section 1, to better understand your physics motivation.  But I found Section 1 to be far too short!  Is this really all you have to say about your physics goals, comparisons to other experiments, implications for the different models/interpretations you cite, etc, etc?
+
+>>>>> Expanded, with new motivation added.
+
+
+Physics questions:
+
+Section 2.2, Table 2:  You note in Section 1.1 that you're potentially sensitive to H->ZZ*.  It would be helpful to clarify and quantify that statement, which left me wondering what your acceptance is for that process.  Did you ever look into this?
+
+>>>>> Our observed limit is set at BR(H->Z+J/psi)=230%, for a SM Higgs production cross section. Direct constraints from H->4l currently have limits at 380%, so for our limit to be competitive for this interpretation the BR(Z*->J/psi) would have to be 60%, which is clearly not the case.
+
+Section 2.2: You note that your nominal signal normalizations are derived with tanBeta=1.  I think I understand that one can work out results for other tanBeta values by scaling.  But judging by Figure 1 and the fact that you have different efficiencies for the various decay processes, it's not clear to me how one would do this.  Am I missing something?
+
+>>>>> Section 6.4 on the model-independent interpretation explains how, by our assumptions, the limit for the decay of the a0 to any ratio of quarks and gluons can be calculated as a simple linear combination of the limits provided to exclusive decay modes.
+
+Sections 1 and 2.2: Given the terseness, I'm not sure I follow why 4 GeV is a "natural" cutoff for this search.  I see later on that at 4 GeV you begin to lose signal sensitivity with this technique, but is there anything else going on that drives this choice?  It's far from clear to the reader.
+
+>>>>> The two reasons are: above 4 GeV the a0 BRs to pairs of tau, charm and b quarks start to become significant, and these are very different final states due to the decay to long lived particles; our sensitivity drops due to changing substructure variables.
+
+Line 352:  I do not understand this sentence.  Can you please clarify?
+
+>>>>> Removed. This was just repeating the line before, and should have been commented out.
+
+Figure 3(c),(d): Your eta distribution is cut off at -2.47 (hardcoded from jets?).  Can you extend to show the full range?  This is true elsewhere, too.
+
+>>>>> It is cut off at 2.7, because we do not use forward electrons, and so the end of the muon spectrometer is as far in eta as we can go.
+
+Figure 4a: You have questionable modeling of the ZpT spectrum, which is no surprise.  This effect causes the signal-rich region to be over-estimated.  This is likely biasing your results.  Is it also mis-modeled in the signal region?  I didn't see that figure.  Have you considered ways to address this, or are you less concerned?
+
+>>>>> The only variables used in the background estimate are the three body mass, and the MLP output variable. Any mismodelling in these is heavily reduced by the 3D reweighting described in Section 4.2.1. As described in Section 4.2.2, the double ratio we then take from this reweighted MC further reduces the dependence of our background estimate on any residual mismodelling. The robust modelling of the background is then confirmed in Figure 21, demonstrating that no such issues affect this search.
+
+L408: It would be convenient for the reader if you itemized this list.
+
+>>>>> We prefer to use prose to expand on the definitions of these variables, as some of them are related, and so should not be explained in isolation. The list is Table 5, which gives a briefer description in a more list-like format.
+
+Figures 10a and 11b:  Same comment as I gave for Figure 4a.  It seems that the reweighting procedure is not doing a good job in potentially signal-enriched regions.
+
+>>>>> While it is true that some mismodelling remains, the double ratio taken for the background estimate is able to mitigate the impact of this residual mismodelling on the background estimate, as shown in Figure 21.
+
+L426:  Is your training sensitive to the mass range?  Presumably you open the mass range to allow higher statistics, but is MVA performance sensitive to this choice?
+
+>>>>> Yes, the MLP inputs vary with the three body mass of the backgrounds. This range is a compromise between maximising background MC statistics and keeping the background MLP inputs variables representative of those in the SR.
+
+L441: Can you say more about the removal of the 0.75 GeV sample?  It seems odd that this sample (and only this one?) was causing a bias in training.  I'm sure the density of signal points at low mass could cause this, but the way things are phrased it sounds like it was this sample specifically.
+
+>>>>> Yes, because without this sample, the a0 mass points are evenly spaced with 0.5 GeV between them. But with this, we have a denser concentration of signal mass hypotheses for low a0 mass, which biases the training towards low masses.
+
+Figure 15:  Can you show the ROC curve for each mass separately?
+
+>>>>> Added.
+
+L456-459:  I confess to not understanding this discussion.  I think you're comparing the MVA training with and without the 2.2 GeV mass point, showing 11% improvement with the MLP and 30% for the BDT.  Doesn't that support the use of the BDT?  If my conclusion is incorrect, please consider clarifying the text.  If not, then I'm confused.
+
+>>>>> The BDT lost more performance when attempting to interpolate to mass points it was not trained for, meaning that is could not reliably extrapolate between the a0 mass points we used in the training. This is now clarified in the text.
+
+Table 6: Can you define what "MLP S/sqrt(B) Gain" means? % change?  Absolute change?  Something else?
+
+>>>>> The S/sqrt(B) gains are defined as the ratio of the S/sqrt(B) after the MLP selection to before the MLP selection. This is now stated in the caption.
+
+L488 & Section 5.1.7:  Don't these relative rates depend on the model (eg, SM vs 2HDM, tanBeta=1 vs 5)?
+
+>>>>> This uncertainty is just designed to cover any mismodelling of the signal selection efficiency, resulting from the fact that we normalise the signal to the inclusive Higgs production cross section, but only model the ggF. The difference in efficiency was found to be very small, so even large changes in the relative rates would result in a small uncertainty. Such large changes are excluded by the measured production modes of the 125 GeV Higgs boson.
+
+Table 8:  Are the numbers in the last column events, or events x 1000?
+
+>>>>> They are 1000s of events, so the first entry is 25500.
+
+L512: This seems like a very strong statement, given the other mismodelings and the complexity of the ultimate reweighting strategy.  Am I missing something?
+
+>>>>> The statement is true, and evidenced by the observation stated in the sentence before. However, the MLP must also be reweighted to correct the other mismodellings you mentioned above. Reweighting U1 was found to improve the other MLP inputs, but in doing so it deformed the jet pt distribution, and thus the three body mass distribution. So we had to reweight by the jet pt as well to stop this happening.
+
+L520: Can you show the reweighting functions used?  Do you have sufficient MC statistics for this?  A primary reason I ask is that you have no uncertainty on this reweighting, if I'm not mistaken.
+
+>>>>> It is a 3D reweighting, so can not be easily visualised directly. We produced are variety of different binning schemes, and looked at the inputs to the calculation of the reweighting scale factors, and chose the bins to each have reasonable statistics. The systematic from the MadGraph comparison uses a different reweighting procedure, and so includes an estimate of the uncertainty on the reweighting.
+
+L531:  Why not just cut jets with Ntrk>9?
+
+>>>>> The MLP effectively makes this cut itself, so there is no need to add to the selection.
+
+Section 4.2.3 / Fig 21: I note that you have a systematic over/under estimate of data in the 120-135 and 135-150 GeV mass bins, respectively.  It's ~1% in all cases.
+
+>>>>> It is difficult to conclude if this is a real effect, or just statistics. But uncertainties are ascribed to cover potential mismodelling of the background shape, which more than cover this effect.
+
+Section 5.1.1:  Is this uncertainty also designed to cover any error in the correlation correction factor?  There must be the possibility that the correction factors do not match the data, but their uncertainty could be large if the MC uncertainty is dominating.
+
+>>>>> This uncertainty only impacts the background estimate through its impact on the correlation correction factor, because the background MC is only used to calculate this factor.
+
+L621: Two instances of MUR?  Was that intended?
+
+>>>>> The typo is fixed. Thanks!
+
+Section 5.1:  There is no uncertainty on the reweighting procedure?
+
+>>>>> As explained above, the systematic from the MadGraph comparison uses a different reweighting procedure, and so includes an estimate of the uncertainty on the reweighting. Also, the lack of uncertainty on the reweighting procedure was discussed at the HDBS approval meeting, where is was agreed that no additional uncertainty was necessary, as the background estimate was found to not change significantly upon removing the reweighting. It should be added that the agreement in Figure 21 shows that if such an uncertainty should be present, it is negligibly small.
+
+Section 6.4:  I didn't follow your arguments here.  You reported that you have inclusive decays of the a0.  I asked before if your results depend on tanBeta, which I think influences the BR to different final states (per figure 1).  So you assume equal efficiency to all hadronic final states (but you said quark vs gluon is not the same...)
+
+>>>>> We do not assume equal efficiencies for the different a0 decay modes, in fact, the calculated efficiencies are given in Table 16, and are different. We do assume that the uncertainties on the efficiencies can be approximated by the inclusive systematics, where the "inclusive" case is the nominal Pythia8 tanBeta=1 BRs.
+
+Table 14:  What are the "uncertainties" here?  There are no uncertainties on upper limits, so I'm confused about the MINOS uncertainty statement.  Can you please clarify?  Are these the 1 standard deviation limit intervals?
+
+>>>>> Apologies, the caption was not updated correctly. The uncertainties on mu, DeltaMu, are calculated as the mean MINOS uncertainty. The numbers in superscript and subscript next to the limits are the 68% intervals for the limits. This is now clarified in the text.
+
+Figure 27:  I guess you're just fitting to the Asimov S+B with one bin, so it's no surprise that the injected rates are recovered.  Do you do any fits to toy MC?  This would give you a better feeling for any bias due to statistical fluctuations.  Given your rates, I believe you're in a Gaussian statistical regime, so this isn't critical.  Just seems odd to use Asimov to conclude you do not have bias (this is not a sufficient test to prove that).
+
+>>>>> This plot was requested during the approval. We have also ran toys. However, given that this is a one-bin fit, these Asimov fits do in principle sample the full range of possible observed data, so this is sufficient to demonstrate the lack of a bias in the fit.
+
+Tables 17-18:  Given my confusion from the text in Sec 6.4, I need some help here. Do I understand correctly that these are *exclusive* interpretations.  IE, if the a0 decays to *only* gg or ss, for example.
+
+>>>>> That is correct. Then, given that you are happy to accept our assumption that the systematics can be modelled using the inclusive values, which is justified in that section, you can find the limit on any BR to a mixture of gluons and the heaviest accessible quark pair.
+
+Section 8:  Can we see unblinded SR plots of the MLP input variables?
+
+>>>>> Appendix added.
+
+Section 8:  I'm missing any comparisons to previous searches.  Are they not relevant?  It seems like we're missing context for this result.
+
+>>>>> Added.

@@ -1,0 +1,138 @@
+Dear Verena,
+
+Many thanks for your thorough reading of this support note, and for all your very helpful comments. Our responses are given below, and an updated version of the note has just been uploaded.
+
+All the best,
+Andy, Elliot and Kostas
+
+
+Luminosity should be 139 ifb → please make sure you are using the latest luminosity tag
+
+https://twiki.cern.ch/twiki/bin/viewauth/Atlas/LuminosityForPhysics
+
+>>>>> 2018 luminosity changed to the latest luminosity-tag. This has been updated in our code, and the plots and results in the note will be updated in our next run-through of the analysis.
+
+
+Section 1.2 would really benefit from a bit more clarification
+
+- It is difficult to follow which of the Higgs bosons are the 125 GeV one, which are additional ones, etc for the scenarios of interest for this analysis. It is also hard to understand what are the assumptions made (couplings, etc) that are relevant for this search.
+
+>>>>> Clarifying text has been added. The default Pythia tan(beta) value of 1 is used, which fully specifies the a0 BRs independent of the 2HDM type being considered.
+
+- There are quite a few more channels that set limits on a new light pseudo-scalar. Perhaps this can be completed at some stage when the note is revised?
+
+>>>>> The ATLAS bbmumu, yyjj, and yyy searches have been added.
+
+
+Section 2.2
+
+- Particularly for the Z+jets background, which is of great importance in this analysis, please include a bit more description of the main MC sample used in this section (which versions, slices, etc) and the motivation for any choices
+
+>>>>> There is a paragraph stating the generator, PDF sets, slicing scheme, and order of cross section calculation. It is stated that these are the ATLAS recommendations, which partially motivates the choice. This generator also has NLO ME calculations, and greater data/MC agreement is seen for the Sherpa sample than the alternative MG sample considered. Further text has been added.
+
+- The text refers to an appendix with the list of samples that has a table of background samples listed 3 times and cut off in the bottom. An update to the table format would be greatly appreciated to make the list of samples legible.
+
+>>>>> Fixed.
+
+- In addition, please include the information about any alternative samples used e.g. Madgraph
+
+>>>>> A paragraph has been added describing the MG samples in more detail.
+
+- It would be nice to include information about the Pythia8+Delphes sample used for the MVA training and validation in the MC section as well, including any information about the motivation for this alternative sample.
+
+>>>>> There is some text which described the purpose of this sample: to help develop and validate the MVA methods used in this analysis. These samples are not used anywhere else in the analysis.
+
+- Please include a description of how the pseudo-scalar is decayed. In L141-42 you state that you follow the default values in Pythia, but do you produce all the decay modes (e.g. including muons and taus, or only gluons, strange and charm decays)? If I understand correctly, Table 3 states the branching ratios for the specific model that is included in Pythia. What are the assumptions of this model? Which specific one is it?
+
+>>>>> As default, Pythia assumes a 2HDM with a tan(beta) value of 1, which leads to the given a0 BRs, independent of the 2HDM type.
+
+
+Section 3.1
+
+- The MLP is mentioned here in the title but it has not been introduced previously. It might help the reader to have a brief introduction to the overall analysis strategy? Or remove the MLP name and call this something like ‘preselection’?
+
+>>>>> Both of these recommendations have been implemented.
+
+- The pT cut on the leptons that is described in the text is below the trigger threshold for single lepton trigger (you state you are using 18 GeV for the leading lepton). However, in Section 3.4 in the full selection you sated that the leading lepton pT cut is 27 GeV. Could you please clarify which cuts are used? Perhaps the discussion of the final selection on leptons etc could be included in this section? It might make things easier for the reader to follow.
+
+>>>>> The text has been clarified to explicitly state the trigger requirements. The final selection table has been left at the end, so that there is a table which covers the whole event-selection. This can be changed if you think the text alterations are not sufficient.
+
+- L193-4 you state that the jet pT is lower for the higher masses because components can fall outside of the jet. Do you have a plot of the DR of the two decay products or something similar to this? It would help the reader to get an idea of the kinematics and for which masses this becomes a bigger issue?
+
+>>>>> Actually, this comment is obsolete. It was the case for the 8 GeV a0 that its decay products fell outside deltaR of 0.4, but for the 4 GeV a0, the lower pt is actually due to taus (and thus neutrinos) in the final state. The text has been updated accordingly.
+
+- L215 you mention that the choice of the highest pT jet does not sculpt the background distribution. Do you have a plot to show this?
+
+>>>>> While our jet selection will produce a higher three body mass distribution, it should not cause a fake peak in the invariant mass of the three body system, as would be the case for a three body mass based selection. The text has been modified to clarify this point.
+
+- L245 Can you please provide more information about the track assisted mass you are calculating and using in the analysis?
+
+>>>>> The track assisted mass is not used later in the analysis, but provides a reasonable proxy for the mass, which is used to illustrate the performance of the track-selection. Nonetheless, it is now defined in the main text.
+
+
+Section 3.3
+
+- L253 - it is hard to understand which jets you are referring to in the statement “angular separations of these jets”, maybe the text can be made clearer?
+
+>>>>> Clarified.
+
+- Can you please the usual information about the training performance? ROC curves, comparison of training and testing samples etc
+
+>>>>> Done.
+
+- It would be nice to have a brief description of what the variables in the MLP are, how they are calculated and some indication about why they are discriminating? It would make it easier for the review to get an overview and then only have to look at the references for more detail.
+
+>>>>> Done.
+
+- How important are the various variables in the MLP? Is the discrimination dominated by one variable or a few or evenly distributed?
+
+>>>> All of the variables are important. None of the variables show more than 2x the separation than any of the others. We considered ~50 variables, and removed variables which did not improve the efficiency by more than ~5% for constant background efficiency. U1 is the variable which shows the greatest separation, followed by angularity, M2, the regression output, tau2, leadTrackPtRatio and deltaRLeadTrack.
+
+- You mention using Pythia8+Delphes samples for signal and Z+jets background to design and validate the MVA, how do these samples compare to the standard ATLAS samples in terms of modelling of variables, performance of the tagger etc? Are the plots shown using the standard ones or the Pythia8+Delphes ones? In general, it is confusing to follow which samples are used for which studies, results  and plots etc
+
+>>>>> The modelling was less accurate than the Geant samples, and differences were noticeable. This is because these samples use Run1-based smearing functions to model the detector response, and don't include pileup. Which is why these samples were not used in any of the plots, or in the derivation of any of the results in this analysis. But were just use to help develop the ideas behind the MLP techniques used. This has now been clarified in the text.
+
+Section 4.1
+
+- L317-9 you list several production mechanisms included in the cross section, do you generate all of these samples?
+
+>>>>> No, we only generate ggF, and will apply a correction and/or systematic to account for the acceptance uncertainty on the signal acceptance introduced by this modelling strategy. There is a section in the systematics chapter covering this.
+
+Section 4.2
+
+- In Section 4.2.1 you describe a reweighing procedure to improve the modelling. Can you please elaborate further on
+
+*** Do you have some indication of the reason for the mismjodeling you are trying to address?
+
+>>>>> The low pTZ region of the sample has known q/g mismodelling, which affects many of our variables. This also partially explains why the U1 variable (which is a re-purposed q/g tagger) reweighting improves the modelling of the other variables.
+
+*** Why did you select this choice of variables for the reweighting for the MLP?
+
+>>>>> First, we noticed that mH was well modelled in each bin of nTracks, such that an nTracks-based reweighting fixed the mH distribution completely. Unfortunately, some mismodelling in the substructure variables remained. As the most discriminant variable, and a q/g tagger (which is known to be mismodelled in the Sherpa sample), U1 was chosen as the basis of the substructure reweighting, and it significantly improved the other substructure variables. However, the U1 reweighting harmed both the data/MC agreement for the pt (and thus three body mass) in the nTracks bins, and the nTracks agreement itself. So it was decided that a 3D reweighting in the nTracks, U1 and pt variables allowed the nTracks reweighting to improve mH, and the U1 reweighting to improve the other substructure variables, while the pT reweighting is necessary to prevent the U1 reweighting ruining the mH agreement.
+
+*** Which samples are used to derive the reweighing? Pythia8+Delphes or the Sherpa ones?
+
+>>>>> Sherpa+Geant. Sherpa+Geant is used for all of the nominal results in this analysis.
+
+*** How much does the sensitivity of the analysis improve by doing this reweighing?
+
+>>>>> The point of the reweighting is not to improve the sensitivity, but to ensure that the background model is robust.
+
+- The ABCD method does have a small correlation, which is extremely good! How does the correlation compare if you use the alternative Madgraph sample compared to Sherpa?
+
+>>>>> For MG Spearmans correlation coefficient is 15% instead of 13%, and Pearsons correlation coefficient is 7.3% instead of 6.5%
+
+- What is the size of the MC-based ABCD correction factor described in Section 4.2.2? Given that the correlation between the 2 variables used in the ABCD estimate is small, would it be easier to take this as an uncertainty rather than a correction?
+
+>>>>> The ABCD-based correction is 0.60 in the SR. Given that we know that there is a non-negligible correlation between the variables it seems to us more appropriate to apply this correction.
+
+- In Section 4.2.2 you show a comparison of the prediction with the nominal sample and the Madgraph alternative sample. These predictions can disagree in some regions by several sigmas given the uncertainties listed here. It does seem that modelling uncertainties would be appropriate to account for disagreements associated to the MC sample. The PMG twiki page has information about a recommended prescription for uncertainties that might be a good starting point to consider https://twiki.cern.ch/twiki/bin/view/AtlasProtected/PmgWeakBosonProcesses#V_jets_AN1
+
+>>>>> The reweighting procedure is not expected to work to the same degree for the MG samples as the Sherpa samples, because it is based on the three body mass distributions being correctly modelled in the individual nTracks bins (which is the case for the Sherpa sample), and also aims to correct the known low pTZ q/g mismodelling (as I explained in my motivation reply). When applied to the MG samples, the reweighting procedure yields modelling improvements, as expected. However, given that the underlying sources of mismodelling are not the same between MG and Sherpa, e.g. MG does not describe the jet pt distribution in the nTracks slices (as Sherpa does), in order to have a useful comparison a separate reweighting procedure would have to be derived for the MG sample. As a result, all of the observed discrepancies should be reduced to the level of the statistical uncertainties.
+
+
+Section 5.1.4
+
+- What is your proposed strategy to determine the signal efficiency for the tagger? Is there some sample in data that can be used to validate the MC prediction?
+
+>>>>> We do not know of any data sample which can be used to calibrate the tagger. However, given the highly dominant background uncertainties, the impact of signal uncertainties on the limit is small. So we intend to apply conservative signal modelling and tracking uncertainties, which are expected to cover any mismodelling of the MLP response on the signal.

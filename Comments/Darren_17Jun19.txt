@@ -1,0 +1,55 @@
+Dear Darren,
+
+Many thanks for your dedicated reading of this support note, and for your very helpful comments. Please find our specific replies attached below. The internal note has also been updated on CDS, and we look forward to discussing these things with you in the EB meeting tomorrow.
+
+All the best,
+Andy, Elliot and Kostas
+
+
+Main comments:
+
+-- How good is the Z+jets / data agreement as a function of pileup? Perhaps show the MLP output split into three equally populated low/med/high mu regions?
+>>>>> Done. Plots in newly added Appendix I.
+
+-- It would be useful to have a plot of the signal purity, signal yield and background yield (overlaid) for each of the MLP percentiles for some signal model variations, plus an explicit mention of the numbers for the VR97, VR98 and SR regions. The latter numbers could be in the same format as Table 10/11/12.
+>>>>> The signal purity plot has been added (Figure 15). The signal yield numbers are given in the newly added Appendix H.
+
+-- Please document the MLP output ranges for the percentile regions (VR) and SR that are used in the analysis
+>>>>> Done. Please see the text in Section 4.2.3.
+
+-- If the VRs contain significant signal purity (for some a0 signal hypotheses), it may be necessary to estimate the bias from using the MLP<0.026 region in your ABCD background estimate. Is the 1.3% signal contamination for the 1.5 GeV a0 the largest contamination? (Should be stated)
+>>>>> It is the largest. Text updated accordingly. Signal purity studies in the newly added Appendix H.
+
+-- Similarly, it would be useful to quantify from toys how much a fit to the full MLP output (or at least SR+VR98-99%) affects the sensitivity of the expected limit
+>>>>> Writing a new fit which simultaneously fits the 98-99% MLP-VR and the SR (optimistically assuming that there are no signal uncertainties on the signal in the 98-99% MLP-VR) changes the 0.5 GeV a0 expected limit from 21.5% to 21.2%. This is a very small improvement, and furthermore no signal uncertainties have been included in this additional fit region for this study, so the actual improvement will be smaller. Also, we have already unblinded this region.
+
+-- How big is the MC-based ABCD correction factor? What is the statistical uncertainty on this correction factor?
+>>>>> The ABCD-based correction in the SR is 0.60+-0.02.
+
+-- I may have missed it, but didn't see any mention of scale/PDF variations on the Z+jets: these variations should be propagated through the analysis, including the ABCD background estimates and the impact documented.
+>>>>> These have been estimated, and will be presented in the EB meeting on 5 August 2019.
+
+-- Do the uncertainties in Table 11/12 include any systematics? This should be clarified in the caption.
+>>>>> This is the uncertainty due to MC and data stats. This is now clarified in the caption.
+
+-- Table 11/12: presuming these are stat uncertainties, can you split them out into the data stat uncertainty (which should be 100% correlated between tables) and the MC correction uncertainty?
+>>>>> I have performed this breakdown as you suggest, and none of the uncertainties change by more that 1% upon removal of the data statistical uncertainty. The numbers are expressed as you prefer.
+
+-- It's not obvious a priori that the Madgraph Z+jets sample should not be considered at the same status as the Sherpa sample for background modelling, especially for Z+1j processes, despite the formal accuracy. Unless there is an explicit data-driven reason to exclude it, the background modelling variations between MG/Sherpa should be propagated as a modelling uncertainty c.f. Sherpa/MG5 comparisons in https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PAPERS/STDM-2016-01/
+In particular, Sherpa does not have formal accuracy any higher than MG+Pythia to describe the jet substructure and other kinematic variables that are input to your MLP.
+>>>>> Sherpa was chosen as it has a higher order ME calculation, and is the ATLAS recommended sample. It also shows best agreement with data. As for the uncertainty, MG does not provide a fair comparison. This is because the reweighting procedure is not expected to work to the same degree for the MG samples as the Sherpa samples, because it is based on the three body mass distributions being correctly modelled in the individual nTracks bins (which is the case for the Sherpa sample), and also aims to correct the known low pTZ q/g mismodelling (as I explained in my motivation reply). When applied to the MG samples, the reweighting procedure yields modelling improvements, as expected. However, given that the underlying sources of mismodelling are not the same between MG and Sherpa, e.g. MG does not describe the jet pt distribution in the nTracks slices (as Sherpa does), in order to have a useful comparison a separate reweighting procedure would have to be derived for the MG sample.
+
+-- For similar reasons, you should also re determine your background estimations (and thus modelling uncertainties) as well as signal model uncertainties due to the jet modelling, which are particularly critical for the MLP input. We should see the change in the final signal and background estimates through variations of the shower models/ scales / underlying event models between Sherpa / Madgraph and Pythia variations. Both background and signal will be potentially affected by this so we need to be sure of the potential effect.
+>>>>> Given our reweighting procedure, these uncertainties are not strictly applicable to our background. Also, the agreement with data within the current uncertainties in the 10 (now 13) validation regions implies that our current uncertainty is not underestimated. More will be said on this in the EB meeting on 5 August 2019.
+
+
+Other comments:
+
+-- Can you explicitly address in the note that the mass/pT coverage of the analysis results in the a0->jj system being resolved as a single R=0.4 jet across the full phase space studied, or mention regions where the merged jet requirement would cause signal inefficiency?
+>>>>> This is now addressed explicitly in the note.
+
+-- Interpretations: it would be useful at the end of the note to already outline a mock set of results you plan to release: will it just be the 95% CL limit vs fixed mass points as in table 13? Would be good to have a full set of tables/plots for the expected ready. Is there a plan for an explicit BSM interpretation in the paper (rather than only the comparison to the SM rate?). For the charm modes, can these limits be reinterpreted directly in terms of the charm Yukawa couplings?
+>>>>> The model independent interpretation section is now updated with Asimov results.
+
+-- You mention these limits will be as model independent as possible - what data / information will be released to allow reinterpretations of these results? Can you demonstrate how people could reinterpret them with a new signal model in future from the information you provide?
+>>>>> The results are given as a table of limits assuming 100% BR to gluons, or to the heaviest kinematically accessible quark pair. It it noted that the limit is a linear function of the q/g fraction. As such, any model which predicts a decay of H->Za0, with a Yukawa ordered a0 which decays hadronically can determine our limit for their model by specifying the a0 mass and the q/g fraction.

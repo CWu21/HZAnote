@@ -1,0 +1,63 @@
+%-------------------------------------------------------------------------------
+% This file contains the title, author and abstract.
+% It also contains all relevant document numbers used for an ATLAS note.
+%-------------------------------------------------------------------------------
+
+% URL: https://cds.cern.ch/record/2654594
+
+% Title
+\AtlasTitle{Search for Decays of the Higgs Boson into a $Z$ Boson and a Light Hadronically Decaying Resonance}
+
+% Draft version:
+% Should be 1.0 for the first circulation, and 2.0 for the second circulation.
+% If given, adds draft version on front page, a 'DRAFT' box on top of each other page, 
+% and line numbers.
+% Comment or remove in final version.
+\AtlasVersion{0.18}
+
+% Abstract - % directly after { is important for correct indentation
+\AtlasAbstract{%
+  A search for decays of the Higgs boson to a $Z$ boson and a light resonance in two lepton plus jet events, using the full Run 2 (2015-2018) dataset of 139~fb$^{-1}$ is presented. The target resonance is an $a^0$ from the Two Higgs Doublet Model, or a $J/\psi$ or $\eta_c$, which decays hadronically. Due to its low mass and high boost, the resonance is reconstructed as a single jet of hadrons, while the $Z$ boson is reconstructed as a dilepton system. A multivariate event selection based on a Multi-Layer Perceptron is followed by a single-bin profile likelihood fit. In the absence of a signal, 95\% $CL_s$ upper limits on $\sigma(H) \text{BR}(H\to Za^0) / \sigma_\text{SM}(H)$ are set, with values starting from $16.8~\text{pb}$ for the signal hypothesis of a 0.5~GeV $a^0$ decaying to gluons, and $105~\text{pb}$ and $107~\text{pb}$ for the $J/\psi$ and $\eta_c$, respectively.
+}
+
+% Author - this does not work with revtex (add it after \begin{document})
+%% \author{The ATLAS Collaboration}
+
+% Authors and list of contributors to the analysis
+% \AtlasAuthorContributor also adds the name to the author list
+% Include package latex/atlascontribute to use this
+% Use authblk package if there are multiple authors, which is included by latex/atlascontribute
+% \usepackage{authblk}
+% Use the following 3 lines to have all institutes on one line
+% \makeatletter
+% \renewcommand\AB@affilsepx{, \protect\Affilfont}
+% \makeatother
+% \renewcommand\Authands{, } % avoid ``. and'' for last author
+% \renewcommand\Affilfont{\itshape\small} % affiliation formatting
+\AtlasAuthorContributor{Andrew Chisholm}{a}{Analyser.}
+\AtlasAuthorContributor{Konstantinos Nikolopoulos}{a}{Analyser.}
+\AtlasAuthorContributor{Elliot Reynolds}{a}{Analyser.}
+% \AtlasContributor{Fourth AtlasContributor}{Contribution to the analysis.}
+%% \author[a]{Andrew Chisholm}
+%% \author[b]{Konstantinos Nikolopoulos}
+%% \author[b]{Elliot Reynolds}
+\affil[a]{University of Birmingham}
+
+% If a special author list should be indicated via a link use the following code:
+% Include the two lines below if you do not use atlasstyle:
+% \usepackage[marginal,hang]{footmisc}
+% \setlength{\footnotemargin}{0.5em}
+% Use the following lines in all cases:
+% \usepackage{authblk}
+% \author{The ATLAS Collaboration%
+% \thanks{The full author list can be found at:\newline
+%   \url{https://atlas.web.cern.ch/Atlas/PUBNOTES/ATL-PHYS-PUB-2017-007/authorlist.pdf}}
+% }
+
+% ATLAS reference code, to help ATLAS members to locate the paper
+\AtlasRefCode{HDBS-2018-37}
+
+% ATLAS note number. Can be an COM, INT, PUB or CONF note
+% \AtlasNote{ATLAS-CONF-2017-XXX}
+% \AtlasNote{ATL-PHYS-PUB-2017-XXX}
+% \AtlasNote{ATL-COM-PHYS-2017-XXX}

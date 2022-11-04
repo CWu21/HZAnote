@@ -1,0 +1,43 @@
+Dear Jana,
+
+Many thanks for taking the time to read this note, and for your very helpful comments. Please find our replies below.
+
+All the best,
+Andy, Elliot and Kostas
+
+
+Section 3.3
+In lines 440-442 you describe how you define the single MLP cut defined on all the signal samples:
+"with each signal sample weighted by how much the a mass phase space is closer to that signal
+sample than to any other".
+I'm afraid this does not read very well and what you do is not clear.
+>>>>> Reworded.
+
+Table 6 shows that the MLP cut really not work well for the 8 GeV sample, the background
+efficiency is higher than the signal efficiency. It would be good to comment in the text
+why this is no problem.
+>>>>> Done.
+
+Section 4.2.1
+Fig 16 (b) shows the striking mismodelling of the high ntracks tail, which is not solved
+by the reweighting. I guess this is because for ntracks>=9 these events all go to the same bin?
+It would be good to comment on this mismodelling in the text and why this is no problem.
+>>>>> One bin is used for ntracks>=9. This is no problem because the MLP has a very low efficiency for these events, and text has been added to explain this.
+
+Section 4.2.3, where you validate the bkg model, you have nice comparisons of data to bkg in the
+signal-depleted regions (especially Fig 21), but only with the statistical uncertainties.
+Could you add the systematics here?
+>>>>> Done.
+
+Section 6.1 has several broken section references.
+>>>>> Thank you very much! This is now fixed.
+
+Fig 24 and 27, the x-axis labelling of the NPs is too small to be readable, please increase the font size.
+>>>>> Done.
+
+Section 5.1.7, you comment on the uncertainty on the VBF acceptance, but what about VH production ?
+>>>>> This uncertainty is understood to be very small, and so the VBF process is used as a proxy for all non-ggF processes to simplify its estimation. Even if the VH systematic was 10x larger than estimated with this proxy, the impact on the signal uncertainty would be 0.34%, which has a negligible impact on the sensitivity.
+
+The correlation plots Fig 25 (Fig 28) show strong correlations of mu with
+alpha_MUR_SIG_SR1 (alpha_MUR_BKGD_SR1). Could you explain what are those uncertainties?
+>>>>> Descriptions added to the systematics sections.

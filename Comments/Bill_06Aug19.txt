@@ -1,0 +1,38 @@
+Captain's log: supplemental.
+
+Fig 5b shows the calibration of the m(llj) is very bad. There is about
+a 10 GeV shits as the a mass varies by 8 GeV. Do you know why?  Since
+I trust the lepton calibrations it seems the  calibration o these low
+pt jets  is suspicious. Could there be a selection bias?
+>>>>> The reason for the poor performance of the 8 GeV a0, and to a lesser extent the 4 GeV a0, is that it can decay to final states including neutrinos, lowering the jet pt. As you suggest, the position of the peak in the other samples is due to the calorimeter jets being calibrated for QCD jets, not collimated a0 decays. This is now explained and illustrated in included text, and a plot of the deviation of the reconstructed jet pt from truth. In any case, this does not affect the analysis, as we just cut on the variable in a different point.
+
+As discussed in the meeting: the table of the correction factors for
+all the regions used in the validation would be great to have
+>>>>> Added.
+
+l575 You assign a systematic on pileup related to the modelling
+uncertainty. This is in principle unrelated to the fact the beamspot
+in MC is 30% longer than in data, thus lowering the pileup density and
+reducing the associated tracks. Is this covered?
+>>>>> We have reweighted the z of the primary vertex for the 1.5 GeV a0 signal sample to account for this. The signal efficiency drops by just 2.0%, which is an order of magnitude less than the systematics we already have on the signal efficiency, so this is not a major concern.
+
+Since the analysis is totally dominated by MC stats did you try to
+increase those? Either redefining the signal SR & VR regions to
+maximise the or asking for more background?
+>>>>> We have thought about that, and it would not work. As the uncertainty is almost all background MC stats, what matters is the signal/(background uncertainty), and the background uncertainty is equal to the statistical uncertainty on the background, which is approximately sqrt(B). So our S/sqrt(B) optimisation is also optimal for our dominant uncertainty. Furthermore, the Zjets sample is already very large, so requesting more MC would be very computationally expensive.
+
+Table 15: The caption says its a cross-section, the rows say %,
+suggesting the SM H sigma is divided out. Which is it please?
+>>>>> The caption states a cross section ratio. So it can be interpreted as a BR limit for SM cross section.
+
+l708 Why is the best fit background not 885200? If the signal floats
+then this is the number that is achieved fir 0 chi2 contribution...
+>>>>> This is just a difference in number of significant figures, sorry. It has now been made consistent.
+
+The sensitivity is totally limited by background MC stats. So any
+enlargement of the BCD regions will improve the results. i THINK you
+said 'A' has the lowest MC stats but here the logic is reversed:
+tightening the region, improving s/b, should improve the limits. Has
+this been explored? Do you have a plot of expected upper limit v
+signal region boundary?
+>>>>> By the same logic in the above response about optimisation procedure, the current cuts are optimal.

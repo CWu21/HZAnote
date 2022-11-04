@@ -1,0 +1,81 @@
+lumi 140.5: Have you used the latest luminosity?
+>>>>> Yes.
+
+Has the debug stream been processed?
+>>>>> Yes, but only 8 events pass our pre-selection. They are not included in the results, but would have no significant effect if they were.
+
+Table 3: why include this table? Surely it is irrelevant for the
+analysis and the plot gives the visual impression?
+>>>>> It gives the BRs of the nominal samples. This is relevant because it corresponds to the samples used for our inclusive (non model-independent) limits, in the results section.
+
+Section 2: Now you have expected limits, can you phrase the signal MC
+sample statistics in terms of the luminosity for a cross-section of that limit?
+>>>>> 1.2-25.5 fb^-1, for the inclusive 0-4 GeV a0 limits for the limits as presented at the second EB meeting.
+
+section 2.1 It seems you processed FTAG2 on the entire dingle lepton
+sample Was there no way to restrict to a dilepton (Z) subset?
+>>>>> These background samples were already available. We only ran FTAG2 ourselves on the signal.
+
+l269 refers to a largest mass of 4 GeV, but I think you use 8?
+>>>>> We include some studies with 8 GeV in the note as we have the sample, but do not expect to set a limit up to this mass in the paper, as there is no real sensitivity.
+
+l303 120-135 GeV sounds rather hastily optimised Do you know how the
+performance depends on this window?
+>>>>> The lower and upper mH mass cuts were simultaneously optimised for the S/sqrt(B). The sensitivity varies strongly as a function of these cuts.
+
+fig 2 b) m_jet is not a calibrated object in ATLAS. I don't think you
+use it - remove this plot please.
+>>>>> Done.
+
+Fig 8 shows the track selection or TTVA is causing mismodelling. Is
+this taken as a systematic on the efficiency?
+>>>>> These distributions are pre-reweighting, and are not used anywhere in the analysis. They are just included to emphasise the improvement of track-based variables with the addition of the track selection, and are in fact seen to improve after the reweighting is applied (which is was not here). The impact of any such mismodelling to the final result is shown to be negligible by the 13 validation regions.
+
+table 5: Is this correlation evaluated for signal or background?
+What are the numbers in brackets please?
+>>>>> The correlations were evaluated for the background MC, this has now been clarified. The numbers in the brackets are the arguments of the modified correlation functions.
+
+fig 10 b. There is a significant mismodelling at M2 below 0.05, which
+is also a region of good s/b likely to be selected by the NN. What is
+the impact?
+The same applies to 11b at high angularity.
+>>>>> Some mismodelling remains, even after the reweighting. However, as discussed in the EB meeting, this mismodelling must affect the different mH regions in the ABCD-style background estimate differently before it can effect the final background estimate. This is shown to not be the case by the agreement with data in the 13 validation regions we discussed, within purely statistical uncertainties. Now in fact other systematics have been added, which will further improve this agreement.
+
+fig 12. It seems the mass-regression does not work well for extreme
+masses. The distribution cuts at 3.7, despite having signals of mass
+4. Similarly the 0.5 GeV signal is found at about 0.9 Do you
+understand this behaviour?
+>>>>> Yes, it is because the regression is being simultaneously trained on multiple signal samples. This means that by estimating masses closer to the mean, it is effectively 'hedging' its bet against a bad estimate.
+
+table 6. This s/root-b gain is not well defined. Is it absolute or
+relative to the s/root-b without the cut?
+>>>>> Relative to without the cut. Text modified for clarification.
+
+l453 The mismodelling in the track multiplicity should be taken as a
+systematic on the signal efficiency. Is it?
+>>>>> It is now added using the Herwig study mentioned in the EB today.
+
+l481 What is the contamination of the B/C/D regions like for a 4 GeV
+a?
+>>>>> All of these contaminations are less than 1% of the background in these regions, even assuming a BR of 100%.
+
+Fig 17 The subfigure captions are n_{tracks}: probably a cut-n-paste
+error?
+>>>>> Thanks! Corrected.
+
+l489 How big, numerically, is the MC-based ABCD correction factor?
+>>>>> It was 0.60+-0.02, but with the updated background estimate it is now 0.72+-0.03.
+
+fig 18: Can we add a sentence saying that in the case of two tracks,
+the (lead / total) starts at 0.5, leading to the step in the
+distribution in fig 18 a.
+>>>>> Done.
+
+table 9/10 The estimate seems to fail for the VRs are mass 135-150.
+Table 11 is little better.
+They do not agree with fig 21. Please check
+>>>>> Thanks! The numbers in the data table are for 135<mH<155 GeV, which was our previous validation region. This is now fixed.
+
+What happens if the data is split into low and high pileup subsets?
+Are results stable/compatible?
+>>>>> The 1.5 GeV a0 signal efficiency is 2.52+-0.05% normally, 2.89+-0.10% for just MC16a, and 2.30+-0.07%. This is because the MLP efficiency is slightly higher at lower pileup. The background estimate is 84100+-3600 normally. Considering only MC16a data and MC, and scaling up to the full luminosity gives an estimate of 92800+-6500. Considering only MC16e data and MC, and scaling up to the full luminosity gives an estimate of 85400+-7000.

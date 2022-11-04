@@ -1,0 +1,36 @@
+* The results and summary sections of the internal note are a bit short -- although the focus is now on the paper draft, please update the internal note also with the results/plots that are planned for the paper release (with discussion) and please try to keep these synchronised (at least the final versions!).
+
+>>>>> These sections have been updated with any additions from the paper draft, and will be kept updated once the plots drafts have converged.
+
+* It would be nice to present the limits as a function of a0 mass graphically as well as in tabular form (here and in the paper draft) -- is there a reason you don't do that?
+
+>>>>> Plots added.
+
+* There are problems with numbers for references in the text in the current version throughout.
+
+>>>>> Fixed.
+
+
+5.1.5 Signal Hadronisation Uncertainty:
+
+* The hadronization uncertainty discussion needs some clarification - at the start of the section the text says that only ntrack is used but the EB understood that all MLP variables are studied?  If it is only ntrack, then we have some concerns with the procedure, as it is not a priori obvious that ntrack dominates, otherwise this needs clarification in the text.
+
+>>>>> ???
+
+* "These reweightings will be derived from an alternative signal sample produced using Herwig7”
+--> this is perhaps just a bit of text left in from a previous iteration, but wanted to check this did not imply something is still to be done here? The text is ambiguous as to how the uncertainty is determined as is (please remove conflicting information as appropriate).
+
+>>>>> The typo is fixed. Thanks!
+
+--> this section also still alludes to the 3.5 GeV signal point being discrepant -- if there was no change to this from your studies, we agreed in the EB meeting that we should interpolate between neighbouring mass points to get a more realistic and justifiable uncertainty on the 3.5 GeV signal point.
+Please add the table per mass point to the note, along with discussion of the value post-interpolation, and verify/confirm that this updated uncertainty is propagated through the analysis.
+
+>>>>> The text states that the 3.5 GeV mass point is interpolated, as we agreed. The table is now added.
+
+* The signal samples generated for hadronisation uncertainties rely on a0->qq decays from herwig, but Pythia/Herwig differences are magnified for gluons and are smaller for quarks, so the signal hadronisation uncertainties derived may be too small when interpreted later in terms of model-dependent limits and for the model-independent results for gluon decays. Do we have any studies / theory papers to justify the use of the quark variations for gluon decays?
+
+>>>>> ???
+
+* In Sec 4.2.3 it would be useful to have a plot similar to Fig 21 for Table 12's results, and also a plot comparing the estimates from the nominal and alternative generators."
+
+>>>>> All added, also with SR and final validation region.
